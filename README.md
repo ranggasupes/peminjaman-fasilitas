@@ -1,66 +1,185 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Informasi Peminjaman dan Penyewaan Fasilitas Umum
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Sistem Informasi Peminjaman dan Penyewaan Fasilitas Umum Milik Instansi Pemerintah Berbasis Web di Kota Palu dan Sekitarnya**
 
-## About Laravel
+Aplikasi ini dikembangkan dengan nama **Fasilitasku** sebagai sistem informasi berbasis web untuk mempermudah proses peminjaman dan penyewaan fasilitas umum milik instansi pemerintah di Kota Palu dan sekitarnya.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Identitas Kelompok
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**KELOMPOK 8**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| No. | Nama Anggota              | NIM         |
+| --- | ------------------------- | ----------- |
+| 1   | Moh. Abdi Ramadhan        | F5212510001 |
+| 2   | Andi Nayla Safa Arrahma P | F5212510005 |
+| 3   | Rangga Ferdi Kurniawan    | F5212510032 |
 
-## Learning Laravel
+## Deskripsi Proyek
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Fasilitasku merupakan aplikasi berbasis web yang dikembangkan untuk mempermudah proses pengajuan dan pengelolaan peminjaman fasilitas umum milik instansi pemerintah. Sistem ini menyediakan layanan bagi masyarakat untuk mencari fasilitas, mengajukan peminjaman, mengunggah bukti pembayaran, serta memantau status pengajuan secara online.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Aplikasi ini juga membantu pihak pengelola fasilitas dalam mengelola data fasilitas, memproses pengajuan peminjaman, dan melakukan verifikasi pembayaran melalui satu sistem terintegrasi.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Fitur Utama
 
-## Laravel Sponsors
+### 1. Peminjam
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Melihat daftar fasilitas publik yang tersedia.
+- Melihat informasi dan detail fasilitas.
+- Mengajukan peminjaman fasilitas.
+- Melihat status pengajuan peminjaman.
+- Mengunggah bukti pembayaran.
+- Memantau status verifikasi pembayaran.
+- Melihat riwayat peminjaman.
 
-### Premium Partners
+### 2. Admin Fasilitas
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Mengelola data fasilitas milik instansi.
+- Melihat pengajuan peminjaman fasilitas.
+- Menyetujui atau menolak pengajuan.
+- Meminta peminjam melakukan perbaikan pengajuan.
+- Memverifikasi bukti pembayaran.
+- Memberikan catatan terkait pembayaran.
 
-## Contributing
+### 3. Super Admin
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Mengelola data instansi.
+- Mengelola akun admin fasilitas.
+- Memantau pengelolaan fasilitas dan sistem.
 
-## Code of Conduct
+## Alur Peminjaman
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Peminjam memilih fasilitas yang ingin digunakan.
+2. Peminjam mengisi formulir pengajuan peminjaman.
+3. Admin fasilitas memeriksa pengajuan.
+4. Admin dapat menyetujui, menolak, atau meminta perbaikan pengajuan.
+5. Jika disetujui, peminjam melanjutkan proses pembayaran.
+6. Peminjam mengunggah bukti pembayaran.
+7. Admin melakukan verifikasi pembayaran.
+8. Jika pembayaran terverifikasi, peminjaman dikonfirmasi.
+9. Setelah kegiatan selesai, status peminjaman dapat diperbarui menjadi selesai.
 
-## Security Vulnerabilities
+## Teknologi yang Digunakan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Backend:** Laravel 12
+- **Bahasa Pemrograman:** PHP
+- **Database:** MySQL
+- **Frontend:** HTML, CSS, JavaScript, Blade
+- **Build Tool:** Vite
+- **Dependency Management:** Composer dan NPM
+- **Version Control:** Git dan GitHub
 
-## License
+## Persyaratan Sistem
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- PHP 8.2 atau lebih baru.
+- Composer.
+- Node.js dan NPM.
+- MySQL atau MariaDB.
+- Git.
+- Web server lokal seperti Laragon.
+
+## Instalasi
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/ranggasupes/peminjaman-fasilitas.git
+```
+
+### 2. Masuk ke Direktori Project
+
+```bash
+cd peminjaman-fasilitas
+```
+
+### 3. Install Dependency Laravel
+
+```bash
+composer install
+```
+
+### 4. Buat File Environment
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Konfigurasi Database
+
+Buat database MySQL dengan nama `peminjaman_fasilitas`, kemudian sesuaikan konfigurasi pada file `.env`.
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=peminjaman_fasilitas
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 7. Jalankan Migration dan Seeder
+
+```bash
+php artisan migrate --seed
+```
+
+### 8. Install Dependency Frontend
+
+```bash
+npm install
+```
+
+### 9. Buat Storage Link
+
+```bash
+php artisan storage:link
+```
+
+### 10. Jalankan Aplikasi
+
+Terminal pertama:
+
+```bash
+php artisan serve
+```
+
+Terminal kedua:
+
+```bash
+npm run dev
+```
+
+Akses aplikasi melalui `http://127.0.0.1:8000`.
+
+## Status Peminjaman
+
+| Status                           | Keterangan                        |
+| -------------------------------- | --------------------------------- |
+| `diajukan`                       | Pengajuan baru dikirim            |
+| `perlu_perbaikan`                | Pengajuan perlu diperbaiki        |
+| `disetujui`                      | Pengajuan disetujui               |
+| `menunggu_pembayaran`            | Menunggu pembayaran               |
+| `menunggu_verifikasi_pembayaran` | Bukti pembayaran sedang diperiksa |
+| `dikonfirmasi`                   | Pembayaran terverifikasi          |
+| `ditolak`                        | Pengajuan ditolak                 |
+| `dibatalkan`                     | Peminjaman dibatalkan             |
+| `selesai`                        | Peminjaman telah selesai          |
+
+## Catatan
+
+- Aplikasi dikembangkan sebagai proyek pembelajaran dan implementasi Rekayasa Perangkat Lunak.
+- Informasi pembayaran pada lingkungan simulasi bukan merupakan rekening pembayaran resmi.
+- Konfigurasi database perlu disesuaikan sebelum menjalankan aplikasi.
+- Jangan mengunggah file `.env` atau informasi kredensial pribadi ke repository publik.
+
+---
+
+**Kelompok 8**  
+Sistem Informasi  
+© 2026
