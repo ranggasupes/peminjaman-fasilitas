@@ -5468,3 +5468,40 @@ textarea.form-control {
         flex-shrink: 0;
     }
 }
+
+/* ========================================
+   MENU PROFIL PEMINJAM
+======================================== */
+
+.user-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.2s ease;
+}
+
+.user-profile-link:hover {
+    opacity: 0.8;
+}
+
+.user-profile-link.active .user-profile-name {
+    color: #24527a;
+}
+
+.user-profile-link .user-avatar {
+    flex-shrink: 0;
+}
+
+.user-profile-name {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Notifikasi error */
+.user-alert-error {
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #f5c2c0;
+}

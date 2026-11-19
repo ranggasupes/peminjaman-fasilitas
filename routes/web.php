@@ -11,6 +11,9 @@ use App\Http\Controllers\PeminjamFasilitasController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\AdminPeminjamanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LaporanAdminController;
+use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +65,22 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
         'superAdmin',
     ])->name('dashboard.super-admin');
 
+    /*
+    |--------------------------------------------------------------------------
+    | PROFIL SUPER ADMIN
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/super-admin/profil-saya', [
+        AdminProfileController::class,
+        'edit',
+    ])->name('super-admin.profil.edit');
+
+    Route::put('/super-admin/profil-saya', [
+        AdminProfileController::class,
+        'update',
+    ])->name('super-admin.profil.update');
+
     // CRUD Instansi
     Route::resource('instansi', InstansiController::class)
         ->except(['show']);
@@ -95,6 +114,22 @@ Route::middleware(['auth', 'role:admin_fasilitas'])->group(function () {
         DashboardController::class,
         'admin',
     ])->name('dashboard.admin');
+
+    /*
+    |--------------------------------------------------------------------------
+    | PROFIL ADMIN FASILITAS
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/admin/profil-saya', [
+        AdminProfileController::class,
+        'edit',
+    ])->name('admin.profil.edit');
+
+    Route::put('/admin/profil-saya', [
+        AdminProfileController::class,
+        'update',
+    ])->name('admin.profil.update');
 
     // CRUD Fasilitas milik instansi admin
     Route::resource('admin/fasilitas', FasilitasController::class)
@@ -158,6 +193,24 @@ Route::middleware(['auth', 'role:admin_fasilitas'])->group(function () {
         '/admin/pengajuan-peminjaman/{peminjaman}/tolak-pembayaran',
         [AdminPeminjamanController::class, 'rejectPayment']
     )->name('admin.peminjaman.reject-payment');
+
+    /*
+    |--------------------------------------------------------------------------
+    | LAPORAN ADMIN FASILITAS
+    |--------------------------------------------------------------------------
+    */
+
+    // Laporan peminjaman
+    Route::get('/admin/laporan/peminjaman', [
+        LaporanAdminController::class,
+        'peminjaman',
+    ])->name('admin.laporan.peminjaman');
+
+    // Laporan pembayaran
+    Route::get('/admin/laporan/pembayaran', [
+        LaporanAdminController::class,
+        'pembayaran',
+    ])->name('admin.laporan.pembayaran');
 });
 
 /*
@@ -174,11 +227,41 @@ Route::middleware(['auth', 'role:peminjam'])->group(function () {
         'peminjam',
     ])->name('dashboard.peminjam');
 
+    /*
+    |--------------------------------------------------------------------------
+    | PROFIL PEMINJAM
+    |--------------------------------------------------------------------------
+    */
+
+    // Halaman edit profil
+    Route::get('/profil-saya', [
+        ProfileController::class,
+        'edit',
+    ])->name('peminjam.profil.edit');
+
+    // Proses update profil
+    Route::put('/profil-saya', [
+        ProfileController::class,
+        'update',
+    ])->name('peminjam.profil.update');
+
+    /*
+    |--------------------------------------------------------------------------
+    | FASILITAS
+    |--------------------------------------------------------------------------
+    */
+
     // Detail fasilitas
     Route::get('/fasilitas/{fasilitas}', [
         PeminjamFasilitasController::class,
         'show',
     ])->name('peminjam.fasilitas.show');
+
+    /*
+    |--------------------------------------------------------------------------
+    | PEMINJAMAN
+    |--------------------------------------------------------------------------
+    */
 
     // Daftar peminjaman saya
     Route::get('/peminjaman-saya', [

@@ -12,7 +12,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<>
+<body>
 
     @auth
         <div class="app-shell">
@@ -53,6 +53,14 @@
                             Data Fasilitas
                         </a>
 
+                        <div class="sidebar-label">AKUN</div>
+
+                        <a href="{{ route('super-admin.profil.edit') }}"
+                           class="nav-link {{ request()->routeIs('super-admin.profil.*') ? 'active' : '' }}">
+                            <span class="nav-icon">◉</span>
+                            Profil Saya
+                        </a>
+
                     {{-- ADMIN FASILITAS --}}
                     @elseif (auth()->user()->role?->nama_role === 'admin_fasilitas')
 
@@ -72,6 +80,28 @@
                            class="nav-link {{ request()->routeIs('admin.peminjaman.*') ? 'active' : '' }}">
                             <span class="nav-icon">▤</span>
                             Pengajuan Peminjaman
+                        </a>
+
+                        <div class="sidebar-label">LAPORAN</div>
+
+                        <a href="{{ route('admin.laporan.peminjaman') }}"
+                           class="nav-link {{ request()->routeIs('admin.laporan.peminjaman') ? 'active' : '' }}">
+                            <span class="nav-icon">▥</span>
+                            Laporan Peminjaman
+                        </a>
+
+                        <a href="{{ route('admin.laporan.pembayaran') }}"
+                           class="nav-link {{ request()->routeIs('admin.laporan.pembayaran') ? 'active' : '' }}">
+                            <span class="nav-icon">▧</span>
+                            Laporan Pembayaran
+                        </a>
+
+                        <div class="sidebar-label">AKUN</div>
+
+                        <a href="{{ route('admin.profil.edit') }}"
+                           class="nav-link {{ request()->routeIs('admin.profil.*') ? 'active' : '' }}">
+                            <span class="nav-icon">◉</span>
+                            Profil Saya
                         </a>
 
                     {{-- PEMINJAM --}}
@@ -127,10 +157,12 @@
 
                 <header class="topbar">
 
-                    <button type="button"
-                            class="menu-toggle"
-                            id="menuToggle"
-                            aria-label="Buka menu">
+                    <button
+                        type="button"
+                        class="menu-toggle"
+                        id="menuToggle"
+                        aria-label="Buka menu"
+                    >
                         ☰
                     </button>
 
@@ -176,16 +208,32 @@
                     @if (session('success'))
                         <div class="alert alert-success">
                             <span>✓</span>
+
                             <div>{{ session('success') }}</div>
-                            <button type="button" class="alert-close" aria-label="Tutup">&times;</button>
+
+                            <button
+                                type="button"
+                                class="alert-close"
+                                aria-label="Tutup"
+                            >
+                                &times;
+                            </button>
                         </div>
                     @endif
 
                     @if (session('error'))
                         <div class="alert alert-error">
                             <span>!</span>
+
                             <div>{{ session('error') }}</div>
-                            <button type="button" class="alert-close" aria-label="Tutup">&times;</button>
+
+                            <button
+                                type="button"
+                                class="alert-close"
+                                aria-label="Tutup"
+                            >
+                                &times;
+                            </button>
                         </div>
                     @endif
 
@@ -203,7 +251,13 @@
                                 </ul>
                             </div>
 
-                            <button type="button" class="alert-close" aria-label="Tutup">&times;</button>
+                            <button
+                                type="button"
+                                class="alert-close"
+                                aria-label="Tutup"
+                            >
+                                &times;
+                            </button>
                         </div>
                     @endif
 
@@ -227,7 +281,10 @@
         </main>
 
     @endauth
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@stack('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @stack('scripts')
+
 </body>
 </html>

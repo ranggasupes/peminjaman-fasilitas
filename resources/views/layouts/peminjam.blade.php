@@ -34,6 +34,7 @@
 
         {{-- TENGAH: NAVIGASI --}}
         <nav class="user-nav-links">
+
             <a href="{{ route('dashboard.peminjam') }}"
                class="{{ request()->routeIs('dashboard.peminjam') ? 'active' : '' }}">
                 <span>⌂</span> Beranda
@@ -52,27 +53,41 @@
                class="{{ request()->routeIs('peminjam.peminjaman.riwayat') ? 'active' : '' }}">
                 <span>▣</span> Riwayat
             </a>
+
         </nav>
 
         {{-- KANAN: AKUN PEMINJAM --}}
         <div class="user-nav-profile">
-            <div class="user-avatar">
-                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-            </div>
 
-            <span class="user-profile-name">
-                {{ auth()->user()->name }}
-            </span>
+            {{-- Menu Profil Saya --}}
+            <a href="{{ route('peminjam.profil.edit') }}"
+               class="user-profile-link {{ request()->routeIs('peminjam.profil.*') ? 'active' : '' }}"
+               title="Kelola Profil Saya"
+               aria-label="Buka Profil Saya">
 
+                <div class="user-avatar">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                </div>
+
+                <span class="user-profile-name">
+                    {{ auth()->user()->name }}
+                </span>
+
+            </a>
+
+            {{-- Logout --}}
             <form action="{{ route('logout') }}"
                   method="POST"
                   class="user-logout-form">
+
                 @csrf
 
                 <button type="submit" class="user-logout-button">
                     Keluar
                 </button>
+
             </form>
+
         </div>
 
     </div>
@@ -80,9 +95,17 @@
 
 <main class="user-container">
 
+    {{-- Notifikasi Berhasil --}}
     @if (session('success'))
         <div class="user-alert">
             {{ session('success') }}
+        </div>
+    @endif
+
+    {{-- Notifikasi Gagal --}}
+    @if (session('error'))
+        <div class="user-alert user-alert-error">
+            {{ session('error') }}
         </div>
     @endif
 
@@ -90,10 +113,12 @@
 
 </main>
 
+{{-- FOOTER --}}
 <footer class="user-footer">
     <div class="user-footer-container">
 
         <div class="user-footer-brand">
+
             <a href="{{ route('dashboard.peminjam') }}" class="user-footer-logo">
                 <span class="user-footer-logo-icon">F</span>
                 <span>Fasilitasku</span>
@@ -109,18 +134,22 @@
                 <span>⌖</span>
                 <span>Kota Palu, Sulawesi Tengah</span>
             </div>
+
         </div>
 
         <div class="user-footer-column">
             <h3>Navigasi</h3>
+
             <a href="{{ route('dashboard.peminjam') }}">Beranda</a>
             <a href="{{ route('dashboard.peminjam') }}#fasilitas">Cari Fasilitas</a>
             <a href="{{ route('peminjam.peminjaman.index') }}">Peminjaman Saya</a>
             <a href="{{ route('peminjam.peminjaman.riwayat') }}">Riwayat Peminjaman</a>
+            <a href="{{ route('peminjam.profil.edit') }}">Profil Saya</a>
         </div>
 
         <div class="user-footer-column">
             <h3>Informasi</h3>
+
             <a href="{{ route('dashboard.peminjam') }}#fasilitas">Daftar Fasilitas</a>
             <a href="{{ route('peminjam.peminjaman.index') }}">Status Peminjaman</a>
             <a href="{{ route('peminjam.peminjaman.index') }}">Panduan Peminjaman</a>
@@ -141,6 +170,7 @@
             <h4>Media Sosial</h4>
 
             <div class="user-footer-socials">
+
                 <a href="https://www.instagram.com/"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -158,12 +188,14 @@
                    rel="noopener noreferrer"
                    aria-label="YouTube"
                    title="YouTube">▶</a>
+
             </div>
         </div>
 
     </div>
 
     <div class="user-footer-bottom">
+
         <p>
             © {{ date('Y') }} Fasilitasku. Semua hak dilindungi.
         </p>
@@ -171,21 +203,26 @@
         <p>
             Layanan Peminjaman Fasilitas Publik
         </p>
+
     </div>
 </footer>
 
-{{-- SweetAlert2 harus dimuat sebelum script yang menggunakannya --}}
+{{-- SWEETALERT2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+{{-- JAVASCRIPT UTAMA --}}
 <script src="{{ asset('js/app.js') }}"></script>
 
+{{-- KONFIRMASI LOGOUT --}}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
     const logoutForm = document.querySelector('.user-logout-form');
 
     if (!logoutForm) return;
 
     logoutForm.addEventListener('submit', function (event) {
+
         event.preventDefault();
 
         Swal.fire({
@@ -200,22 +237,30 @@ document.addEventListener('DOMContentLoaded', function () {
             reverseButtons: true,
             focusCancel: true,
             allowOutsideClick: false,
+
             customClass: {
                 popup: 'rounded-4',
                 confirmButton: 'rounded-3 px-4',
                 cancelButton: 'rounded-3 px-4'
             }
+
         }).then(function (result) {
+
             if (result.isConfirmed) {
                 HTMLFormElement.prototype.submit.call(logoutForm);
             }
+
         });
+
     });
+
 });
 </script>
 
+{{-- BOOTSTRAP --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+{{-- SCRIPT TAMBAHAN SETIAP HALAMAN --}}
 @stack('scripts')
 
 </body>
